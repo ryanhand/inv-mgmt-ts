@@ -1,0 +1,35 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Fender",
+      "category": "exterior",
+      "onHandQty": 4,
+      "safetyStockQty": 3
+    },
+    {
+      "id": 2,
+      "name": "Headlight",
+      "category": "exterior",
+      "onHandQty": 6,
+      "safetyStockQty": 1
+    },
+    {
+      "id": 3,
+      "name": "Sensor",
+      "category": "engine",
+      "onHandQty": 4,
+      "safetyStockQty": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
