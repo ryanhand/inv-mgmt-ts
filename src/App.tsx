@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getItems, deleteItem } from "./api/itemsApi";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 export type Item = {
   id: number;
@@ -26,17 +27,25 @@ export function App() {
     <>
       <ToastContainer />
       <h1>Inventory Manager</h1>
+
+      <Link to="/item">Add Food</Link>
       <table>
         <thead>
-          <th></th>
           <th>Name</th>
           <th>Category</th>
           <th>On Hand</th>
           <th>Safety Stock</th>
+          <th></th>
         </thead>
         <tbody>
           {items.map((item) => (
             <tr key={item.name}>
+              <td>
+                <Link to={"/item/" + item.id}>{item.name}</Link>
+              </td>
+              <td>{item.category}</td>
+              <td>{item.onHandQty}</td>
+              <td>{item.safetyStockQty}</td>
               <button
                 onClick={async () => {
                   await deleteItem(item.id);
@@ -45,10 +54,6 @@ export function App() {
               >
                 Delete
               </button>
-              <td>{item.name}</td>
-              <td>{item.category}</td>
-              <td>{item.onHandQty}</td>
-              <td>{item.safetyStockQty}</td>
             </tr>
           ))}
         </tbody>

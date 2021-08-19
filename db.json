@@ -9,7 +9,7 @@
     },
     {
       "id": 2,
-      "name": "Headlight",
+      "name": "Headlight2",
       "category": "exterior",
       "onHandQty": 6,
       "safetyStockQty": 1
@@ -22,25 +22,25 @@
       "safetyStockQty": 2
     },
     {
-      "name": "test",
+      "name": "Mirror",
       "category": "exterior",
-      "onHandQty": "3",
-      "safetyStockQty": "3",
+      "onHandQty": "4",
+      "safetyStockQty": "5",
       "id": 4
     },
     {
-      "name": "test2",
+      "name": "Taillight",
       "category": "engine",
-      "onHandQty": "44",
-      "safetyStockQty": "12",
-      "id": 5
+      "onHandQty": "123",
+      "safetyStockQty": "234",
+      "id": 6
     },
     {
-      "name": "test3",
+      "name": "test5",
       "category": "exterior",
-      "onHandQty": "22",
-      "safetyStockQty": "22",
-      "id": 6
+      "onHandQty": "44",
+      "safetyStockQty": "55",
+      "id": 8
     }
   ],
   "comments": [

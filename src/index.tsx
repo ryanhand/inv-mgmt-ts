@@ -4,6 +4,7 @@ import { App } from "./App";
 import { BrowserRouter, Route } from "react-router-dom";
 import { About } from "./About";
 import { Nav } from "./Nav";
+import { ItemForm } from "./ItemForm";
 
 // HTML                      vs JSX
 // class                        className
@@ -15,8 +16,15 @@ import { Nav } from "./Nav";
 render(
   <BrowserRouter>
     <Nav />
+    {/* we could use Switch here too */}
     <Route path="/about">
       <About />
+    </Route>
+    <Route path="/item" exact>
+      <ItemForm />
+    </Route>
+    <Route path="/item/:itemId">
+      <ItemForm />
     </Route>
     <Route path="/" exact>
       <App />
