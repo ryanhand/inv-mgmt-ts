@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { getItems } from "./api/itemsApi";
+import { getItems, deleteItem } from "./api/itemsApi";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-type Item = {
+export type Item = {
+  id: number;
   name: string;
   category: string;
   onHandQty: number;
@@ -13,16 +16,15 @@ export function App() {
 
   useEffect(() => {
     async function callGetItems() {
-      const respone = await getItems();
-      if (!respone.ok) throw new Error("Call to get items failed.");
-      const json = await respone.json();
-      setItems(json);
+      const data = await getItems();
+      setItems(data);
     }
     callGetItems();
   }, []);
 
   return (
     <>
+      <ToastContainer />
       <h1>Inventory Manager</h1>
       <table>
         <thead>
@@ -35,7 +37,14 @@ export function App() {
         <tbody>
           {items.map((item) => (
             <tr key={item.name}>
-              <button onClick={() => alert("clicked")}>Delete</button>
+              <button
+                onClick={async () => {
+                  await deleteItem(item.id);
+                  setItems(items.filter((i) => i.id !== item.id));
+                }}
+              >
+                Delete
+              </button>
               <td>{item.name}</td>
               <td>{item.category}</td>
               <td>{item.onHandQty}</td>
