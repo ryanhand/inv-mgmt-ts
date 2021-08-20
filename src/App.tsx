@@ -1,63 +1,40 @@
-import { useEffect, useState } from "react";
-import { getItems, deleteItem } from "./api/itemsApi";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
-
-export type Item = {
-  id: number;
-  name: string;
-  category: string;
-  onHandQty: number;
-  safetyStockQty: number;
-};
+import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter, Route } from "react-router-dom";
+import { About } from "./About";
+import { Home } from "./Home";
+import { ItemForm } from "./ItemForm";
+import { Nav } from "./Nav";
+import { UserContextProvider, UserContextType } from "./UserContext";
 
 export function App() {
-  const [items, setItems] = useState<Item[]>([]);
-
-  useEffect(() => {
-    async function callGetItems() {
-      const data = await getItems();
-      setItems(data);
-    }
-    callGetItems();
-  }, []);
+  const queryClient = new QueryClient();
+  const user: UserContextType = {
+    email: "ryanwhand@gmail.com",
+    name: "Ryan",
+    role: "admin",
+    token: "abc123",
+  };
 
   return (
-    <>
-      <ToastContainer />
-      <h1>Inventory Manager</h1>
-
-      <Link to="/item">Add Food</Link>
-      <table>
-        <thead>
-          <th>Name</th>
-          <th>Category</th>
-          <th>On Hand</th>
-          <th>Safety Stock</th>
-          <th></th>
-        </thead>
-        <tbody>
-          {items.map((item) => (
-            <tr key={item.name}>
-              <td>
-                <Link to={"/item/" + item.id}>{item.name}</Link>
-              </td>
-              <td>{item.category}</td>
-              <td>{item.onHandQty}</td>
-              <td>{item.safetyStockQty}</td>
-              <button
-                onClick={async () => {
-                  await deleteItem(item.id);
-                  setItems(items.filter((i) => i.id !== item.id));
-                }}
-              >
-                Delete
-              </button>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </>
+    <UserContextProvider value={user}>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Nav />
+          {/* we could use Switch here too */}
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/item" exact>
+            <ItemForm />
+          </Route>
+          <Route path="/item/:itemId">
+            <ItemForm />
+          </Route>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </UserContextProvider>
   );
 }

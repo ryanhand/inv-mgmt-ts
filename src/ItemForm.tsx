@@ -4,7 +4,7 @@ import { addItem, editItem, getItem } from "./api/itemsApi";
 import { Input } from "./shared/Input";
 import { Select } from "./shared/Select";
 import { useHistory, useParams } from "react-router-dom"; // useParams allows you to read params from the url
-import { Item } from "./App";
+import { Item } from "./Home";
 
 /*
 get the matching food via fetch

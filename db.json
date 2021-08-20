@@ -4,15 +4,15 @@
       "id": 1,
       "name": "Fender",
       "category": "exterior",
-      "onHandQty": 4,
+      "onHandQty": "5",
       "safetyStockQty": 3
     },
     {
       "id": 2,
-      "name": "Headlight2",
+      "name": "Headlight",
       "category": "exterior",
-      "onHandQty": 6,
-      "safetyStockQty": 1
+      "onHandQty": "1",
+      "safetyStockQty": "6"
     },
     {
       "id": 3,
@@ -22,25 +22,11 @@
       "safetyStockQty": 2
     },
     {
-      "name": "Mirror",
+      "name": "Splash Shield",
       "category": "exterior",
-      "onHandQty": "4",
-      "safetyStockQty": "5",
+      "onHandQty": "3",
+      "safetyStockQty": "2",
       "id": 4
-    },
-    {
-      "name": "Taillight",
-      "category": "engine",
-      "onHandQty": "123",
-      "safetyStockQty": "234",
-      "id": 6
-    },
-    {
-      "name": "test5",
-      "category": "exterior",
-      "onHandQty": "44",
-      "safetyStockQty": "55",
-      "id": 8
     }
   ],
   "comments": [

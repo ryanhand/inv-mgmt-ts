@@ -1,9 +1,7 @@
-import { Item } from "../App";
+import { Item } from "../Home";
 import { NewItem } from "../ItemForm";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
-
-debugger;
 
 export async function getItems() {
   const response = await fetch(baseUrl + "items");
